@@ -1,22 +1,42 @@
+import { useState } from 'react';
+
 function Form() {
+  const [formulario, setFormulario] = useState(false);
+
+  const HandleClick = () => {
+    setFormulario(!formulario);
+  };
+
   return (
-    <form action="">
-      <label htmlFor="nomeDoServico">Nome do serviço</label>
-      <input type="text" name="nomeDoServico" id="nomeDoServico" />
+    <div>
+      {
+    formulario
+      ? (
+        <form action="">
+          <label htmlFor="servico">Nome do serviço</label>
+          <input type="text" name="servico" id="servico" />
 
-      <label htmlFor="login">Login</label>
-      <input type="text" name="login" id="login" />
+          <label htmlFor="entrar">Login</label>
+          <input type="text" name="entrar" id="entrar" />
 
-      <label htmlFor="senha">Senha</label>
-      <input type="password" name="senha" id="senha" />
+          <label htmlFor="chave">Senha</label>
+          <input type="password" name="chave" id="chave" />
 
-      <label htmlFor="url">URL</label>
-      <input type="text" name="url" id="url" />
+          <label htmlFor="caminho">URL</label>
+          <input type="text" name="caminho" id="caminho" />
+          <button>Cadastrar</button>
+          <button onClick={ HandleClick }>Cancelar</button>
 
-      <button>Cadastrar</button>
-      <button>Cancelar</button>
+        </form>
+      )
+      : (
+        <div>
+          <button onClick={ HandleClick }>Cadastrar nova senha</button>
+        </div>
+      )
+   }
 
-    </form>
+    </div>
   );
 }
 
