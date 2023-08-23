@@ -6,6 +6,11 @@ function Form() {
   const [campoSenha, setCampoSenha] = useState('');
   const [formulario, setFormulario] = useState(false);
 
+  function alertaDoFormulario(alerta: string, validacao: boolean) {
+    const validarCampos = validacao ? 'valid-password-check' : 'invalid-password-check';
+    return <span className={ validarCampos }>{alerta}</span>;
+  }
+
   function validarCadastro() {
     const validarCampoServico = nomeServico.length > 0;
     const validarCampoLogin = campoLogin.length > 0;
@@ -58,6 +63,28 @@ function Form() {
               <button disabled={ !validarCadastro() }>Cadastrar</button>
 
               <button onClick={ HandleClick }>Cancelar</button>
+              <div>
+                <ol>
+                  <li>
+                    {alertaDoFormulario(
+                      'Possuir 8 ou mais caracteres',
+                      campoSenha.length >= 8,
+                    )}
+                  </li>
+                  <li>
+                    {alertaDoFormulario(
+                      'Possuir até 16 caracteres',
+                      campoSenha.length <= 16,
+                    )}
+                  </li>
+                  <li>
+                    {alertaDoFormulario('Possuir letras e números', /^(?=.*[a-z])(?=.*\d)/.test(campoSenha))}
+                  </li>
+                  <li>
+                    {alertaDoFormulario('Possuir algum caractere especial', /^(?=.*[@#$%^&+=!])/.test(campoSenha))}
+                  </li>
+                </ol>
+              </div>
             </form>
           )
           : (
