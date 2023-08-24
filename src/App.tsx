@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import Form from './components/Form';
 
-type NovaSenhaNew = {
+type NovaSenhaType = {
   nomeServico: string,
   campoLogin:string,
   campoSenha: string,
@@ -11,12 +11,22 @@ type NovaSenhaNew = {
 };
 
 function App() {
+  const [escondePassword, setEscondePassword] = useState(false);
   const [estadoForm, setEstadoForm] = useState(false);
-  const [removeSenha, setRemoveSenha] = useState<NovaSenhaNew[]>([]);
-  const removerSenhas = (senha: NovaSenhaNew) => {
+  const [removeSenha, setRemoveSenha] = useState<NovaSenhaType[]>([]);
+  const removerSenhas = (senha: NovaSenhaType) => {
     setRemoveSenha([...removeSenha, senha]);
     setEstadoForm(false);
   };
+
+  const toggleEscondePassword = () => {
+    setEscondePassword(!escondePassword);
+  };
+
+  const mostrarSenha = (password: string) => {
+    return escondePassword ? '******' : password;
+  };
+
   return (
     <div>
       <h1>Gerenciador de Senhas</h1>
@@ -34,7 +44,7 @@ function App() {
             <div key={ senha.campoLogin }>
               <a href={ senha.campoLink }>{ senha.nomeServico}</a>
               <p>{senha.campoLogin}</p>
-              <p>{senha.campoSenha}</p>
+              <p>{mostrarSenha(senha.campoSenha)}</p>
               <button
                 data-testid="remove-btn"
                 onClick={ () => setRemoveSenha(removeSenha
@@ -43,6 +53,14 @@ function App() {
               >
                 remover
               </button>
+              <label htmlFor="escondePassword">Esconder senhas</label>
+              <input
+                type="checkbox"
+                name=""
+                id="escondePassword"
+                checked={ escondePassword }
+                onChange={ toggleEscondePassword }
+              />
             </div>))}
       </div>
     </div>
