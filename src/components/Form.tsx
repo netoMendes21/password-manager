@@ -80,23 +80,23 @@ function Form({ removerSenhas, setEstadoForm }: RemoverSenhaType) {
           onChange={ mudandoEstadoInput }
           value={ infoForm.campoLink }
         />
+        <div className="botoes">
+          <button
+            disabled={ validarCadastro() }
+            onClick={ () => removerSenhas(infoForm) }
+          >
+            Cadastrar
 
-        <button
-          className="botaoCadastrar"
-          disabled={ validarCadastro() }
-          onClick={ () => removerSenhas(infoForm) }
-        >
-          Cadastrar
+          </button>
 
-        </button>
+          <button
+            className="botaoCancelar"
+            onClick={ () => setEstadoForm(false) }
+          >
+            Cancelar
 
-        <button
-          className="botaoCancelar"
-          onClick={ () => setEstadoForm(false) }
-        >
-          Cancelar
-
-        </button>
+          </button>
+        </div>
         <div>
           <ol>
             <li>

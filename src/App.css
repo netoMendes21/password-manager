@@ -55,47 +55,54 @@ form * {
   padding: 2px;
 }
 
-.botaoCadastrar {
-  align-items: center;
-  border-style: inherit;
+.botaoCancelar {
+  color: red;
   display: flex;
-  font-weight: 500;
-  justify-content: center;
-  width: 5vw;
 }
 
-.botaoCancelar {
+.botoes * {
   align-items: center;
-  border-style: inherit;
+  border-style: outset;
   display: flex;
-  font-weight: 500;
+  font-weight: 700;
   justify-content: center;
-  width: 5vw;
+  padding: 5px;
+  width: 4vw;
 }
 
 .removeSenha {
   display: flex;
 }
 
-/* .botaoRemover {
-  align-items: center;
+
+.botaoRemover {
   border-radius: 5px;
   display: flex;
   font-family: Arial , Helvetica , sans-serif;
   font-size: 15px;
   font-weight: 700;
-  justify-content: center;
   margin: 2px;
+  margin-left: 58px;
   padding: 4px;
   width: 4vw;
-} */
+}
 
 form {
+
+  /* border: 1px solid red; */
   display: flex;
   flex-direction: column;
+  margin-bottom: 10px;
   width: 20vw;
 }
 
+.esconder {
+  margin-left: 40px;
+}
+
+.box {
+  margin-left: 8px;
+}
 
 .campoVazio {
   font-family: Arial , Helvetica , sans-serif;

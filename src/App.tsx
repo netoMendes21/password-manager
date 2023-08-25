@@ -61,7 +61,13 @@ function App() {
               >
                 remover
               </button>
-              <label htmlFor="escondePassword">Esconder senhas</label>
+              <label
+                className="esconder"
+                htmlFor="escondePassword"
+              >
+                Esconder senhas
+
+              </label>
               <input
                 className="box"
                 type="checkbox"
