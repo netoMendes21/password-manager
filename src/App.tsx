@@ -28,24 +28,32 @@ function App() {
   };
 
   return (
-    <div>
+    <div className="grade">
       <h1>Gerenciador de Senhas</h1>
 
       {estadoForm ? (
         <Form removerSenhas={ removerSenhas } setEstadoForm={ setEstadoForm } />
       ) : (
-        <button onClick={ () => setEstadoForm(true) }>Cadastrar Nova Senha</button>
+        <button
+          className="botaoNovaSenha"
+          onClick={ () => setEstadoForm(true) }
+        >
+          Cadastrar Nova Senha
+
+        </button>
       )}
 
-      <div>
+      <div className="removeSenha">
 
-        {removeSenha.length === 0 ? <span>Nenhuma senha Cadastrada</span>
+        {removeSenha.length === 0
+          ? <span className="campoVazio">Nenhuma senha Cadastrada</span>
           : removeSenha.map((senha) => (
             <div key={ senha.campoLogin }>
               <a href={ senha.campoLink }>{ senha.nomeServico}</a>
               <p>{senha.campoLogin}</p>
               <p>{mostrarSenha(senha.campoSenha)}</p>
               <button
+                className="botaoRemover"
                 data-testid="remove-btn"
                 onClick={ () => setRemoveSenha(removeSenha
                   .filter((password) => password.campoLogin !== senha.campoLogin)) }
@@ -55,6 +63,7 @@ function App() {
               </button>
               <label htmlFor="escondePassword">Esconder senhas</label>
               <input
+                className="box"
                 type="checkbox"
                 name=""
                 id="escondePassword"

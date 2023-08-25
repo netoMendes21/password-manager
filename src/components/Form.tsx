@@ -82,6 +82,7 @@ function Form({ removerSenhas, setEstadoForm }: RemoverSenhaType) {
         />
 
         <button
+          className="botaoCadastrar"
           disabled={ validarCadastro() }
           onClick={ () => removerSenhas(infoForm) }
         >
@@ -89,7 +90,13 @@ function Form({ removerSenhas, setEstadoForm }: RemoverSenhaType) {
 
         </button>
 
-        <button onClick={ () => setEstadoForm(false) }>Cancelar</button>
+        <button
+          className="botaoCancelar"
+          onClick={ () => setEstadoForm(false) }
+        >
+          Cancelar
+
+        </button>
         <div>
           <ol>
             <li>
